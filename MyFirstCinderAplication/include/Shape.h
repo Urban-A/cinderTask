@@ -4,6 +4,7 @@
 #pragma once
 #include "cinder/app/App.h"
 #include "cinder/Area.h"
+#include "rapidjson/prettywriter.h"
 
 class Shape
 {
@@ -14,12 +15,14 @@ public:
 	Shape();
 	Shape(PossibleShapes objectShape,ci::vec2 location,ci::Color color);
 	Shape(PossibleShapes objectShape, ci::vec2 location, ci::Color color, ci::vec2 direction);
+	Shape(PossibleShapes objectShape, ci::vec2 location, ci::Color color, ci::vec2 direction, bool rogue);
 	~Shape();
 	void virtual drawShape();
 	void updateLocation(ci::vec2 velocity);
 	void applyDirection();
 	void virtual bounceBounds(ci::Area bounds);
 	bool virtual collision(ci::vec2 point);
+	virtual void serialize(rapidjson::PrettyWriter<rapidjson::StringBuffer>& writer);
 
 
 	PossibleShapes objectShape;

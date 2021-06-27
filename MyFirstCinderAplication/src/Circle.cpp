@@ -13,6 +13,7 @@ Circle::~Circle(){}
 
 Circle::Circle(float radius, ci::vec2 location, ci::Color color) : Shape(Shape::PossibleShapes::circle, location, color), radius(radius){}
 Circle::Circle(float radius, ci::vec2 location, ci::Color color, ci::vec2 direction) : Shape(Shape::PossibleShapes::circle, location, color, direction), radius(radius) {}
+Circle::Circle(float radius, ci::vec2 location, ci::Color color, ci::vec2 direction, bool rogue) : Shape(Shape::PossibleShapes::circle, location, color, direction, rogue), radius(radius) {}
 
 void Circle::drawShape() {
 	gl::color(color);
@@ -42,4 +43,14 @@ void Circle::bounceBounds(ci::Area bounds) {
 	else if (location.x + radius > bounds.getWidth()) {
 		direction.x = abs(direction.x) * -1;
 	}
+}
+
+void Circle::serialize(rapidjson::PrettyWriter<rapidjson::StringBuffer>& writer) {
+	writer.StartObject();
+		writer.Key("shape");
+		writer.String("circle");
+		writer.Key("radius");
+		writer.Double(radius);
+		Shape::serialize(writer);
+	writer.EndObject();
 }

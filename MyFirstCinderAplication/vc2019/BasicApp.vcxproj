@@ -212,6 +212,7 @@ xcopy /y "..\..\..\lib\msw\$(PlatformTarget)\d3dcompiler_46.dll" "$(OutDir)"</Co
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Circle.h" />
+    <ClInclude Include="..\include\ImageInfo.h" />
     <ClInclude Include="..\include\Rectangle.h" />
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\include\Shape.h" />
