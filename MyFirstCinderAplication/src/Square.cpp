@@ -30,7 +30,7 @@ void Square::drawShape() {
 
 bool Square::collision(ci::vec2 point) {
 	
-	return((point.x >= location.x && point.x <= location.x + size) && (point.y >= location.y && point.y <= location.y + size));
+	return((point.x >= location.x -size/2 && point.x <= location.x + size/2) && (point.y >= location.y -size/2 && point.y <= location.y + size/2));
 }
 
 void Square::bounceBounds(ci::Area bounds) {
